@@ -1,0 +1,173 @@
+{% extends "TriviaQuestApp/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<section class="slider_section ">
+  <div id="customCarousel1" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <div class="container ">
+          <div class="row">
+            <div class="col-md-7 col-lg-6 ">
+              <div class="detail-box">
+                <h1>
+                  Trivia Quest
+                </h1>
+                <p>
+                  ¡Bienvenido a Trivia Quest! Tu destino para desafíos de preguntas
+                   emocionantes. Descubre un mundo de opciones intrigantes y pon a
+                   prueba tu ingenio con preguntas tipo A, B, C y D.
+                   ¿Estás listo para la emoción?
+                   ¡Comienza tu búsqueda en Trivia Quest ahora!
+                </p>
+                <div class="btn-box">
+                  <a href="" class="btn1">
+                    !Comenzar!
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section></div>
+
+<!-- food section -->
+<br><br>
+<section class="food_section layout_padding-bottom">
+  <div class="container">
+    <div class="heading_container heading_center">
+      <h2>
+        Games
+      </h2>
+    </div>
+
+    <ul class="filters_menu">
+      <li class="active" data-filter="*">All</li>
+      <li data-filter=".burger">Ejemplo</li>
+      <li data-filter=".pizza">Ejemplo</li>
+      <li data-filter=".pasta">Ejemplo</li>
+      <li data-filter=".fries">Ejemplo</li>
+    </ul>
+
+    <div class="filters-content">
+      <div class="row grid">
+        <div class="col-sm-6 col-lg-4 all pizza">
+          <div class="box">
+            <div>
+              <div class="img-box">
+                <img src="{% static 'assets/img/interrogacion.png' %}" alt="">
+              </div>
+              <div class="detail-box">
+                <h5>
+                  Ejemplo
+                </h5>
+                <p>
+                  Ejemplo
+                </p>
+                <div class="options">
+                  <h6>
+                    Ejemplo
+                  </h6>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-4 all burger">
+          <div class="box">
+            <div>
+              <div class="img-box">
+                <img src="{% static 'assets/img/interrogacion.png' %}" alt="">
+              </div>
+              <div class="detail-box">
+                <h5>
+                  Ejemplo
+                </h5>
+                <p>
+                  Ejemplo
+                </p>
+                <div class="options">
+                  <h6>
+                    Ejemplo
+                  </h6>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-4 all pizza">
+          <div class="box">
+            <div>
+              <div class="img-box">
+                <img src="{% static 'assets/img/interrogacion.png' %}" alt="">
+              </div>
+              <div class="detail-box">
+                <h5>
+                  Ejemplo
+                </h5>
+                <p>
+                  Ejemplo
+                </p>
+                <div class="options">
+                  <h6>
+                    Ejemplo
+                  </h6>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="btn-box">
+      <a href="">
+        Ejemplo
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- end food section -->
+
+<!-- about section -->
+
+<section class="about_section layout_padding">
+  <div class="container  ">
+
+    <div class="row">
+      <div class="col-md-6 ">
+        <div class="img-box">
+          <img src="{% static 'assets/img/mascota.png' %}" alt="">
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="detail-box">
+          <div class="heading_container">
+            <h2>
+              Trivia Quest
+            </h2>
+          </div>
+          <p>
+            ¡Bienvenido a Trivia Quest, el emocionante mundo de desafíos intelectuales!
+             Sumérgete en una experiencia única llena de preguntas intrigantes y
+             opciones cautivadoras. En Trivia Quest, no solo encontrarás preguntas,
+             sino una aventura para poner a prueba tu conocimiento y desbloquear el
+             genio que llevas dentro. Prepárate para explorar el fascinante universo
+             de opciones A, B, C y D, donde cada elección te acerca más a la victoria.
+            ¡Únete a nosotros y eleva tu ingenio con cada pregunta! La diversión
+             comienza aquí, en Trivia Quest, donde el aprendizaje se fusiona con
+             la emoción. ¡Que comience el desafío!
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+{% endblock %}

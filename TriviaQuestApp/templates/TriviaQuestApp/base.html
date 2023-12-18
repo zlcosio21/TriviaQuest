@@ -1,0 +1,94 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <link rel="shortcut icon" href="#" type="">
+
+  <title> Trivia Quest </title>
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="{% static 'assets/css/bootstrap.css' %}" />
+  <link href="{% static 'assets/css/style.css' %}" rel="stylesheet" />
+
+</head>
+
+<body>
+
+  <div class="hero_area">
+    <div class="bg-box">
+      <img src="{% static 'assets/img/fondo_inicio.jpg' %}" alt="">
+    </div>
+    <!-- header section strats -->
+    <header class="header_section">
+      <div class="container">
+        <nav class="navbar navbar-expand-lg custom_nav-container ">
+          <a class="navbar-brand" href="inicio.html">
+            <span>
+              Trivia Quest
+            </span>
+          </a>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+            <ul class="navbar-nav  mx-auto ">
+              <li class="nav-item active">
+                <a class="nav-link" href="index.html">Inicio</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Ejemplo</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Ejemplo</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Ejemplo</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Ejemplo</a>
+              </li>
+            </ul>
+
+            <div class="user_option">
+              <a href="" class="user_link">
+                <i class="fa fa-user" aria-hidden="true"></i>
+              </a>
+              <form class="form-inline">
+                <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
+                  <i class="fa fa-search" aria-hidden="true"></i>
+                </button>
+              </form>
+              <a href="" class="order_online">
+                Explorar Videojuegos
+              </a>
+            </div>
+
+          </div>
+        </nav>
+      </div>
+
+      {% block header %}
+
+
+      {% endblock %}
+
+    </header>
+
+  {% block content %}
+
+
+  {% endblock %}
+
+</body>
+
+</html>

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from preguntas.models import CategoriaQuiz, Quiz
+from quiz.models import CategoriaQuiz, Quiz
 
 # Register your models here.
 class CategoriaQuizAdmin(admin.ModelAdmin):

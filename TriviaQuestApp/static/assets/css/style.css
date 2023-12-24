@@ -449,6 +449,15 @@ a:focus {
   background-color: #e69c00;
 }
 
+.card-quiz-category {
+  background-color: rgb(219, 216, 216);
+  font-size: 30px;
+  color: black;
+}
+
+.card-quiz-question{
+  text-align: center;
+}
 
 /* # Responsive */
 

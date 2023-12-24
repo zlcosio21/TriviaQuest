@@ -43,92 +43,37 @@
   <div class="container">
     <div class="heading_container heading_center">
       <h2>
-        Games
+        Quizes
       </h2>
     </div>
 
     <ul class="filters_menu">
-      <li class="active" data-filter="*">All</li>
-      <li data-filter=".burger">Ejemplo</li>
-      <li data-filter=".pizza">Ejemplo</li>
-      <li data-filter=".pasta">Ejemplo</li>
-      <li data-filter=".fries">Ejemplo</li>
+      <li class="active">Todos</li>
+      {% for categoria in categorias %}
+        <li data-filter=".fries">{{categoria.nombre}}</li>
+      {% endfor %}
     </ul>
 
     <div class="filters-content">
       <div class="row grid">
-        <div class="col-sm-6 col-lg-4 all pizza">
-          <div class="box">
-            <div>
-              <div class="img-box">
-                <img src="{% static 'assets/img/interrogacion.png' %}" alt="">
-              </div>
-              <div class="detail-box">
-                <h5>
-                  Ejemplo
-                </h5>
-                <p>
-                  Ejemplo
-                </p>
-                <div class="options">
-                  <h6>
-                    Ejemplo
-                  </h6>
+          {% for quiz in quizes %}
+            <div class="col-sm-6 col-lg-4 all pizza">
+              <div class="box">
+                <div>
+                  <div class="img-box card-quiz-category">
+                    {{quiz.categoria.nombre}}
+                  </div>
+                  <div class="detail-box">
+                    <h3 class="card-quiz-question">{{quiz.pregunta}}</h3>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-lg-4 all burger">
-          <div class="box">
-            <div>
-              <div class="img-box">
-                <img src="{% static 'assets/img/interrogacion.png' %}" alt="">
-              </div>
-              <div class="detail-box">
-                <h5>
-                  Ejemplo
-                </h5>
-                <p>
-                  Ejemplo
-                </p>
-                <div class="options">
-                  <h6>
-                    Ejemplo
-                  </h6>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-lg-4 all pizza">
-          <div class="box">
-            <div>
-              <div class="img-box">
-                <img src="{% static 'assets/img/interrogacion.png' %}" alt="">
-              </div>
-              <div class="detail-box">
-                <h5>
-                  Ejemplo
-                </h5>
-                <p>
-                  Ejemplo
-                </p>
-                <div class="options">
-                  <h6>
-                    Ejemplo
-                  </h6>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+          {% endfor %}
       </div>
     </div>
     <div class="btn-box">
-      <a href="">
-        Ejemplo
-      </a>
+      <a href="">Jugar</a>
     </div>
   </div>
 </section>

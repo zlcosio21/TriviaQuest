@@ -36,7 +36,7 @@ def creacion_quiz(request):
 
         return redirect("prueba_creacion_quiz")
 
-    return render(request, "preguntas/prueba.html")
+    return render(request, "preguntas/creacion_quiz.html")
 
 def prueba_creacion_quiz(request):
     quizes = Quiz.objects.filter(categoria=CategoriaQuiz.objects.get(nombre="Cultura general"))

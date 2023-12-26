@@ -34,11 +34,11 @@ def creacion_quiz(request):
             opcion_correcta=opcion_correcta,
         )
 
-        return redirect("prueba_creacion_quiz")
+        return redirect("inicio")
 
     return render(request, "quiz/creacion_quiz.html")
 
-def prueba_creacion_quiz(request):
-    quizes = Quiz.objects.filter(categoria=CategoriaQuiz.objects.get(nombre="Cultura general"))
+def eleccion_quizes(request):
+    categorias = CategoriaQuiz.objects.all()
 
-    return render(request, "quiz/prueba_quiz.html", {"quizes":quizes})
+    return render(request, "quiz/eleccion_quizes.html", {"categorias":categorias})

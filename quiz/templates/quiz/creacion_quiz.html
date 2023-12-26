@@ -63,7 +63,11 @@
                         <label>
                             <input type="radio" name="opcion_correcta" value="D" required> D
                         </label>
-                        <button type="submit" class="btn button-create-quiz">Crear pregunta</button>
+                        {% if user.is_authenticated %}
+                            <button type="submit" class="btn button-create-quiz">Crear pregunta</button>
+                        {% else %}
+                            <a href="{% url 'inicio_sesion' %}" class="btn button-create-quiz">Crear pregunta</a>
+                        {% endif %}
                     </div>
                 </div>
             </div>

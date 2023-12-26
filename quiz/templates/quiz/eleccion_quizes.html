@@ -1,0 +1,41 @@
+{% extends "TriviaQuestApp/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<section class="quiz-election body-quiz-election">
+    <div class="container-quiz-election">
+        <h1 class="heading">Trivia Quest</h1>
+        <div class="settings">
+            <label class="label-quiz-election" for="num-questions">Numero de preguntas:</label>
+            <select class="select-quiz-election" id="num-questions">
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="15">15</option>
+                <option value="20">20</option>
+                <option value="20">30</option>
+                <option value="20">40</option>
+                <option value="20">50</option>
+            </select>
+            <label class="label-quiz-election" for="category">Selecciona categoria:</label>
+            <select class="select-quiz-election" id="category">
+                {% for categoria in categorias %}
+                    <option value="{{categoria.nombre}}">{{categoria.nombre}}</option>
+                {% endfor %}
+            </select>
+            <label class="label-quiz-election" for="time">Selecciona tiempo por quiz:</label>
+            <select class="select-quiz-election" id="time">
+                <option value="10">10 segundos</option>
+                <option value="15">15 segundos</option>
+                <option value="20">20 segundos</option>
+                <option value="25">25 segundos</option>
+                <option value="30">30 segundos</option>
+                <option value="60">60 segundos</option>
+            </select>
+        </div>
+        <button class="btn-quiz-election start">Comenzar Quiz</button>
+    <div>
+</section>
+
+{% endblock %}

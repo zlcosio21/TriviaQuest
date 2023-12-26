@@ -717,3 +717,153 @@ padding-left: 0;
 .button-create-quiz {
   margin-left: 15px;
 }
+
+/*--------------------------------------------------------------
+# Authentication
+--------------------------------------------------------------*/
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
+.auth{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+  background: url('')no-repeat;
+  background-position: center;
+  background-size: cover;
+  margin: 0;
+  padding: 0;
+  font-family: 'poppins',sans-serif;
+}
+
+.form-box{
+  position: relative;
+  width: 400px;
+  height: 450px;
+  background: transparent;
+  border: 2px solid black;
+  border-radius: 20px;
+  backdrop-filter: blur(15px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-box-register{
+  position: relative;
+  width: 400px;
+  height: 550px;
+  background: transparent;
+  border: 2px solid black;
+  border-radius: 20px;
+  backdrop-filter: blur(15px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 45px;
+}
+
+.auth h2 {
+  font-size: 2em;
+  color: black;
+  text-align: center;
+}
+
+.inputbox{
+  position: relative;
+  margin: 30px 0;
+  width: 310px;
+  border-bottom: 2px solid black
+}
+
+.inputbox .error-register {
+  position: absolute;
+  top: 100%;
+  left: 5px;
+  transform: translateY(-10px);
+  color: #dc3545;
+  font-size: 0.9em;
+}
+
+.inputbox label{
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  transform: translateY(-50%);
+  color: black;
+  font-size: 1em;
+  pointer-events: none;
+  transition: .5s;
+}
+
+input:focus ~ label,
+input:valid ~ label{
+top: -5px;
+}
+
+.inputbox input {
+  width: 100%;
+  height: 50px;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 1em;
+  padding:0 35px 0 5px;
+  color: black;
+}
+
+.inputbox ion-icon{
+  position: absolute;
+  right: 8px;
+  color: black;
+  font-size: 1.2em;
+  top: 20px;
+}
+
+.auth-button{
+  width: 100%;
+  height: 40px;
+  border-radius: 40px;
+  background: black;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 1em;
+  font-weight: 600;
+  color: #fff;
+}
+
+.register{
+  font-size: .9em;
+  color: black;
+  text-align: center;
+  margin: 25px 0 10px;
+}
+
+.register p a{
+  text-decoration: none;
+  color: black;
+  font-weight: 600;
+}
+
+.register p a:hover{
+  text-decoration: underline;
+}
+
+.error-login {
+  font-size: 14px;
+  color: red;
+  display: block;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.error-register {
+  font-size: 14px;
+  color: red;
+  display: block;
+  margin-top: 10px;
+  text-align: center;
+}

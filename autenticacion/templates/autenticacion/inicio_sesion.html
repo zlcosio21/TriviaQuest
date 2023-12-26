@@ -1,0 +1,42 @@
+{% extends "TriviaQuestApp/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<section class="auth">
+  <div class="form-box">
+    <div class="form-value">
+      <form action="{% url 'inicio_sesion' %}" method="post">
+        {% csrf_token %}
+
+        <h2>Iniciar Sesion</h2>
+
+        <div class="inputbox">
+          <ion-icon name="person-outline"></ion-icon>
+          <input type="text" name="username" required>
+          <label>Nombre de usuario</label>
+        </div>
+
+        <div class="inputbox">
+          <ion-icon name="lock-closed-outline"></ion-icon>
+          <input type="password" name="password" required>
+          <label>Contraseña</label>
+        </div>
+
+        <button class="auth-button" type="submit">Iniciar Sesion</button>
+
+        {% if messages %} {% for message in messages %}
+          <span class="error-login">{{message}}</span>
+        {% endfor %} {% endif %}
+
+        <div class="register">
+          <p>No tengo una cuenta <a href="{% url 'registro' %}">Registrarse</a></p>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

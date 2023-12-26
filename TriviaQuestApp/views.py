@@ -1,9 +1,9 @@
 from django.shortcuts import render
 from quiz.models import CategoriaQuiz, Quiz
+from random import sample
 
-# Create your views here.
 def inicio(request):
-    categorias = CategoriaQuiz.objects.all()[:4]
-    quizes = Quiz.objects.all()[:6]
+    categorias = sample(list(CategoriaQuiz.objects.all()), min(4, CategoriaQuiz.objects.count()))
+    quizes = sample(list(Quiz.objects.all()), min(6, Quiz.objects.count()))
 
     return render(request, "TriviaQuestApp/inicio.html", {"quizes":quizes, "categorias":categorias})

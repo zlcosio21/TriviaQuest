@@ -1,0 +1,53 @@
+{% extends "TriviaQuestApp/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="quiz-election body-quiz-election">
+  <div class="container-quiz-election">
+    <div class="timer">
+      <div class="progress">
+        <div class="progress-bar" id="time" data-valor={{tiempo}}></div>
+        <span class="progress-text"></span>
+      </div>
+    </div>
+    <div class="question-wrapper">
+      <div class="number">
+        Question <span class="current">1</span>
+        <span class="total">/{{num_preguntas}}</span>
+      </div>
+      <div class="question">{{quiz.pregunta}}</div>
+    </div>
+    <div class="answer-wrapper">
+      <div class="answer selected">
+        <span class="text">{{quiz.primera_opcion}}</span>
+        <span class="checkbox">
+          <i class="fas fa-check"></i>
+        </span>
+      </div>
+      <div class="answer selected">
+        <span class="text">{{quiz.primera_opcion}}</span>
+        <span class="checkbox">
+          <i class="fas fa-check"></i>
+        </span>
+      </div>
+      <div class="answer selected">
+        <span class="text">{{quiz.primera_opcion}}</span>
+        <span class="checkbox">
+          <i class="fas fa-check"></i>
+        </span>
+      </div>
+      <div class="answer selected">
+        <span class="text">{{quiz.cuarta_opcion}}</span>
+        <span class="checkbox">
+          <i class="fas fa-check"></i>
+        </span>
+      </div>
+      <button class="btn-quiz-election submit" disabled>Submit</button>
+      <button class="btn-quiz-election next">Next</button>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

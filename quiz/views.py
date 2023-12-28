@@ -41,4 +41,18 @@ def creacion_quiz(request):
 def eleccion_quizes(request):
     categorias = CategoriaQuiz.objects.all()
 
+    if request.method == "POST":
+        num_preguntas = request.POST.get("num_preguntas")
+        categoria = request.POST.get("categoria")
+        categoria = CategoriaQuiz.objects.get(nombre=categoria)
+        tiempo = request.POST.get("tiempo")
+
+        quiz = Quiz.objects.get(categoria=categoria)
+
+        return render(request, "quiz/juego_quiz.html", {"quiz":quiz, "num_preguntas":num_preguntas, "categoria":categoria, "tiempo":tiempo})
+
     return render(request, "quiz/eleccion_quizes.html", {"categorias":categorias})
+
+def juego_quiz(request):
+
+    return render(request, "quiz/juego_quiz.html")

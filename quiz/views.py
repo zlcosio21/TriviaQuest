@@ -37,12 +37,11 @@ def eleccion_quizes(request):
     if request.method == "POST":
         num_preguntas = request.POST.get("num_preguntas")
         categoria = request.POST.get("categoria")
-        categoria = CategoriaQuiz.objects.get(nombre=categoria)
         tiempo = request.POST.get("tiempo")
+        pregunta_actual = 1
+        respuestas_correctas = 0
 
-        quiz = Quiz.objects.get(categoria=categoria)
-
-        return render(request, "quiz/juego_quiz.html", {"quiz":quiz, "num_preguntas":num_preguntas, "categoria":categoria, "tiempo":tiempo})
+        return redirect("juego_quiz", respuestas_correctas, pregunta_actual, num_preguntas, categoria, tiempo)
 
     return render(request, "quiz/eleccion_quizes.html", {"categorias":categorias})
 

@@ -1027,12 +1027,6 @@ top: -5px;
   transition: all 0.3s;
 }
 
-.answer:hover:not(.checked) .checkbox,
-.answer.selected .checkbox {
-  background-color: #0c80ef;
-  border-color: #0c80ef;
-}
-
 .answer.selected .checkbox i {
   opacity: 1;
 }

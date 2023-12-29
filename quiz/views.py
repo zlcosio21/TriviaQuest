@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from quiz.models import Quiz, CategoriaQuiz
+from validators import correct_option
 
 # Create your views here.
 def creacion_quiz(request):
@@ -13,15 +14,7 @@ def creacion_quiz(request):
         opcion_correcta = request.POST.get("opcion_correcta")
 
         categoria_fk, created = CategoriaQuiz.objects.get_or_create(nombre=categoria)
-
-        OPCIONES = {
-            'A': primera_opcion,
-            'B': segunda_opcion,
-            'C': tercera_opcion,
-            'D': cuarta_opcion,
-        }
-
-        opcion_correcta = OPCIONES.get(opcion_correcta)
+        opcion_correcta = correct_option(primera_opcion, segunda_opcion, tercera_opcion, cuarta_opcion, opcion_correcta)
 
         Quiz.objects.create(
             usuario=request.user,

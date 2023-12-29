@@ -18,15 +18,7 @@ class Quiz(Models):
     segunda_opcion = models.CharField(max_length=90)
     tercera_opcion = models.CharField(max_length=90)
     cuarta_opcion = models.CharField(max_length=90)
-
-    OPCIONES = [
-        ('primera_opcion', 'Primera Opción'),
-        ('segunda_opcion', 'Segunda Opción'),
-        ('tercera_opcion', 'Tercera Opción'),
-        ('cuarta_opcion', 'Cuarta Opción'),
-    ]
-
-    opcion_correcta = models.CharField(max_length=100, choices=OPCIONES, default='primera_opcion')
+    opcion_correcta = models.CharField(max_length=90)
 
     def __str__(self):
-        return f"Usuario {self.usuario.username} - Categoria {self.categoria.nombre} - Pregunta {self.pregunta}"
+        return f"Usuario {self.usuario.username} - Categoria {self.categoria.nombre} - Pregunta {self.pregunta} - Correcta {self.opcion_correcta}"

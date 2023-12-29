@@ -58,3 +58,18 @@ def juego_quiz(request, respuestas_correctas, pregunta_actual, num_preguntas, ca
     }
 
     return render(request, "quiz/juego_quiz.html", context)
+
+def comprobar_respuesta(request, pregunta, respuestas_correctas, pregunta_actual, num_preguntas, categoria, tiempo):
+    if request.method == "POST":
+        opcion_escogida = request.POST.get("opcion_escogida")
+
+        if pregunta_actual == num_preguntas:
+            return redirect("inicio")
+
+        quiz = Quiz.objects.get(pregunta=pregunta)
+        respuestas_correctas +=  1 if opcion_escogida == quiz.opcion_correcta else 0
+        pregunta_actual += 1
+
+        return redirect("juego_quiz", respuestas_correctas, pregunta_actual, num_preguntas, categoria, tiempo)
+
+    return render(request, "quiz/juego_quiz.html")

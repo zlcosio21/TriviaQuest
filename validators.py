@@ -42,3 +42,15 @@ def isvalid(request, username, password, password_confirm):
         return True
 
     return False
+
+def correct_option(primera_opcion, segunda_opcion, tercera_opcion, cuarta_opcion, opcion_correcta):
+    OPCIONES = {
+        'A': primera_opcion,
+        'B': segunda_opcion,
+        'C': tercera_opcion,
+        'D': cuarta_opcion,
+    }
+
+    opcion_correcta = OPCIONES.get(opcion_correcta)
+
+    return opcion_correcta

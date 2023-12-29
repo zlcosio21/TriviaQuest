@@ -45,6 +45,16 @@ def eleccion_quizes(request):
 
     return render(request, "quiz/eleccion_quizes.html", {"categorias":categorias})
 
-def juego_quiz(request):
+def juego_quiz(request, respuestas_correctas, pregunta_actual, num_preguntas, categoria, tiempo):
+    categoria = CategoriaQuiz.objects.get(nombre=categoria)
+    quiz = Quiz.objects.filter(categoria=categoria).order_by('?').first()
 
-    return render(request, "quiz/juego_quiz.html")
+    context = {
+        "respuestas_correctas":respuestas_correctas,
+        "quiz":quiz,
+        "pregunta_actual":pregunta_actual,
+        "num_preguntas":num_preguntas,
+        "categoria":categoria, "tiempo":tiempo
+    }
+
+    return render(request, "quiz/juego_quiz.html", context)

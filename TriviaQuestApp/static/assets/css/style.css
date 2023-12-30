@@ -901,6 +901,10 @@ top: -5px;
   margin-top: 50px;
 }
 
+.margin-container-quiz {
+  margin-top: 90px;
+}
+
 .heading {
   text-align: center;
   font-size: 40px;

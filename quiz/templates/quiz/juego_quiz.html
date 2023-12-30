@@ -17,12 +17,13 @@
       </div>
       <div class="question-wrapper">
         <div class="number">
-          Question <span class="current">{{pregunta_actual}}</span>
+          Pregunta <span class="current">{{pregunta_actual}}</span>
           <span class="total">/{{num_preguntas}}</span>
         </div>
         <div class="question">{{quiz.pregunta}}</div>
       </div>
       <div class="answer-wrapper">
+        <input type="radio" name="opcion_escogida" value="sin_tiempo" required style="display: none;">
         <div class="answer selected">
           <span class="text">{{quiz.primera_opcion}}</span>
           <span class="checkbox">
@@ -51,7 +52,7 @@
             <input type="radio" name="opcion_escogida" value="{{quiz.cuarta_opcion}}" required>
           </span>
         </div>
-        <button class="btn-quiz-election submit" type="submit">Submit</button>
+        <button class="btn-quiz-election" type="submit">Submit</button>
       </div>
     </div>
   </div>

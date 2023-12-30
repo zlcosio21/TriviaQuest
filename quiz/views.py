@@ -81,4 +81,9 @@ def comprobar_respuesta(request, pregunta, respuestas_correctas, pregunta_actual
 
 def fin_juego_quiz(request, respuestas_correctas, num_preguntas):
 
-    return render(request, "quiz/fin_juego_quiz.html", {"respuestas_correctas":respuestas_correctas, "num_preguntas":num_preguntas})
+    context = {
+        "respuestas_correctas":respuestas_correctas,
+        "num_preguntas":num_preguntas
+    }
+
+    return render(request, "quiz/fin_juego_quiz.html", context)

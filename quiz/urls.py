@@ -7,4 +7,5 @@ urlpatterns = [
     path('eleccion_quizes/', views.eleccion_quizes, name="eleccion_quizes"),
     path('juego_quiz/<int:respuestas_correctas>/<int:pregunta_actual>/<int:num_preguntas>/<str:categoria>/<int:tiempo>/', views.juego_quiz, name="juego_quiz"),
     path('comprobar_respuesta/<str:pregunta>/<int:respuestas_correctas>/<int:pregunta_actual>/<int:num_preguntas>/<str:categoria>/<int:tiempo>/', views.comprobar_respuesta, name="comprobar_respuesta"),
+    path("fin_juego_quiz/<int:respuestas_correctas>/<int:num_preguntas>/", views.fin_juego_quiz, name="fin_juego_quiz")
 ]

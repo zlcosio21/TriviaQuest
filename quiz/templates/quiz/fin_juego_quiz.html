@@ -1,0 +1,25 @@
+{% extends "TriviaQuestApp/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="quiz-election body-quiz-election">
+    <div class="container-quiz-election">
+        <div class="end-screen">
+            <h1 class="heading">Trivia Quest</h1>
+            <div class="score">
+                <span class="score-text">Tu puntaje:</span>
+                <div>
+                    <span class="total-score">{{respuestas_correctas}}</span>
+                    <span class="total-score">/ {{num_preguntas}}</span>
+                </div>
+            </div>
+            <a href="{% url 'eleccion_quizes' %}">
+                <button class="btn-quiz-election">Restart Quiz</button>
+            </a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -27,6 +27,11 @@
                         <option value="{{categoria.nombre}}">{{categoria.nombre}}</option>
                     {% endfor %}
                 </select>
+
+                {% for message in messages %} {% if 'not_quizes_category' in message.tags %}
+                    <p class="error-category">{{message}}</p>
+                {% endif %} {% endfor %}
+
                 <label class="label-quiz-election" for="time">Selecciona tiempo por quiz:</label>
                 <select class="select-quiz-election" id="time" name="tiempo" required>
                     <option value="10">10 segundos</option>

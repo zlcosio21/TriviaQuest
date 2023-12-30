@@ -50,6 +50,10 @@ def juego_quiz(request, respuestas_correctas, pregunta_actual, num_preguntas, ca
     categoria = CategoriaQuiz.objects.get(nombre=categoria)
     quiz = Quiz.objects.filter(categoria=categoria).order_by('?').first()
 
+    if not quiz:
+        messages.error(request, f"Actualmente no hay quizes para la categoria {categoria.nombre}", extra_tags="not_quizes_category")
+        return redirect("eleccion_quizes")
+
     context = {
         "respuestas_correctas":respuestas_correctas,
         "quiz":quiz,

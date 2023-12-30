@@ -9,14 +9,11 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
-const playAudio = (src) => {
-  const audio = new Audio(src);
-  audio.play();
-};
-
 const progressBar = document.querySelector(".progress-bar"),
   progressText = document.querySelector(".progress-text"),
-  selectTime = document.getElementById("time");
+  selectTime = document.getElementById("time"),
+  submitButton = document.querySelector(".btn-quiz-election"),
+  hiddenInput = document.querySelector('input[name="opcion_escogida"][value="sin_tiempo"]');
 
 let time = parseInt(selectTime.dataset.valor);
 let intervalId;
@@ -27,8 +24,10 @@ const startQuestion = () => {
     progress(time);
     time--;
 
-    if (time < 0) {
+    if (time === 0) {
       clearInterval(intervalId);
+      hiddenInput.checked = true;
+      submitButton.click();
     }
   }, 1000);
 };

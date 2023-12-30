@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from quiz.models import Quiz, CategoriaQuiz
 from validators import correct_option
+from django.contrib import messages
 
 # Create your views here.
 def creacion_quiz(request):
@@ -63,13 +64,17 @@ def comprobar_respuesta(request, pregunta, respuestas_correctas, pregunta_actual
     if request.method == "POST":
         opcion_escogida = request.POST.get("opcion_escogida")
 
-        if pregunta_actual == num_preguntas:
-            return redirect("inicio")
-
         quiz = Quiz.objects.get(pregunta=pregunta)
         respuestas_correctas +=  1 if opcion_escogida == quiz.opcion_correcta else 0
         pregunta_actual += 1
 
+        if pregunta_actual > num_preguntas:
+            return redirect("fin_juego_quiz", respuestas_correctas, num_preguntas)
+
         return redirect("juego_quiz", respuestas_correctas, pregunta_actual, num_preguntas, categoria, tiempo)
 
     return render(request, "quiz/juego_quiz.html")
+
+def fin_juego_quiz(request, respuestas_correctas, num_preguntas):
+
+    return render(request, "quiz/fin_juego_quiz.html", {"respuestas_correctas":respuestas_correctas, "num_preguntas":num_preguntas})

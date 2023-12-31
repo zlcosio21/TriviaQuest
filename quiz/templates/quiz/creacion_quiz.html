@@ -5,74 +5,47 @@
 {% block content %}
 <br><br><br><br><br>
 
-<div class="bg-box">
-    <img src="{% static 'assets/img/fondo_inicio.jpg' %}" alt="">
-</div>
-
-<form action="{% url 'creacion_quiz' %}" method="post" role="form" class="form-create-quiz">
+<form action="{% url 'creacion_quiz' %}" method="post" role="form">
     {% csrf_token %}
 
-    <div class="create-question">
-        <input type="text" name="pregunta" class="input-question-create-quiz" size="40" maxlength="100" placeholder="Escribe tu pregunta {{categoria_fk}}" required>
-    </div>
+    <div class="quiz-election body-quiz-election">
+        <div class="container-quiz-election margin-create-quiz">
+            <h1 class="heading">Creacion de Quiz</h1>
+            <div class="settings">
 
-    <div class="category-create-quiz">
-        <input type="text" name="categoria" class="input-category-create-quiz" maxlength="30" placeholder="Escribe la categoria" required>
-    </div>
+                <label class="label-quiz-election">Escribe la pregunta:</label>
+                    <input class="margin-question-quiz" type="text" name="pregunta" maxlength="100" required>
 
-    <div class="display-options">
-        <div class="options">
-            <div class="option">
-                <div class="letter">A</div>
-                <div class="input-option">
-                    <input type="text" name="primera_opcion" class="input-option-create-quiz" maxlength="90" placeholder="Primera Respuesta" required>
-                </div>
+                <label class="label-quiz-election">Escribe la categoria:</label>
+                    <input class="margin-question-quiz" type="text" name="categoria" maxlength="30" required>
+
+                <label class="label-quiz-election">Escribe la primera opcion:</label>
+                    <input class="margin-question-quiz" type="text" name="primera_opcion" maxlength="90" required>
+
+                <label class="label-quiz-election">Escribe la segunda opcion:</label>
+                    <input class="margin-question-quiz" type="text" name="segunda_opcion" maxlength="90" required>
+
+                <label class="label-quiz-election">Escribe la tercera opcion:</label>
+                    <input class="margin-question-quiz" type="text" name="tercera_opcion" maxlength="90" required>
+
+                <label class="label-quiz-election">Escribe la cuarta opcion:</label>
+                    <input class="margin-question-quiz" type="text" name="cuarta_opcion" maxlength="90" required>
+
+                <label class="label-quiz-election" for="time">Selecciona la opcion correcta:</label>
+                <select class="select-quiz-election margin-category-quiz" name="opcion_correcta" required>
+                    <option value="A">Primera opcion A</option>
+                    <option value="B">Segunda opcion B</option>
+                    <option value="C">Tercera opcion C</option>
+                    <option value="D">Cuarta opcion D</option>
+                </select>
+
             </div>
-            <div class="option">
-                <div class="letter">B</div>
-                <div class="input-option">
-                    <input type="text" name="segunda_opcion" class="input-option-create-quiz" maxlength="90" placeholder="Segunda Respuesta" required>
-                </div>
-            </div>
-            <div class="option">
-                <div class="letter">C</div>
-                <div class="input-option">
-                    <input type="text" name="tercera_opcion" class="input-option-create-quiz" maxlength="90" placeholder="Tercera Respuesta" required>
-                </div>
-            </div>
-            <div class="option">
-                <div class="letter">D</div>
-                <div class="input-option">
-                    <input type="text" name="cuarta_opcion" class="input-option-create-quiz" maxlength="90" placeholder="Cuarta Respuesta" required>
-                </div>
-            </div>
-            <div class="option">
-                <div class="letter">✔</div>
-                <div class="input-option-correct">
-                    <div class="option-correct-create-quiz">
-                        Respuesta Correcta
-                        <label>
-                            <input type="radio" name="opcion_correcta" value="A" required> A
-                        </label>
-                        <label>
-                            <input type="radio" name="opcion_correcta" value="B" required> B
-                        </label>
-                        <label>
-                            <input type="radio" name="opcion_correcta" value="C" required> C
-                        </label>
-                        <label>
-                            <input type="radio" name="opcion_correcta" value="D" required> D
-                        </label>
-                        {% if user.is_authenticated %}
-                            <button type="submit" class="btn button-create-quiz">Crear pregunta</button>
-                        {% else %}
-                            <a href="{% url 'inicio_sesion' %}" class="btn button-create-quiz">Crear pregunta</a>
-                        {% endif %}
-                    </div>
-                </div>
-            </div>
+            {% if user.is_authenticated %}
+                <button class="btn-quiz-election start" type="submit">Crear Quiz</button>
+            {% else %}
+                <a href="{% url 'inicio_sesion' %}" class="redirect-link-login">Crear Quiz</a><br><br>
+            {% endif %}
         </div>
-
     </div>
 
 </form>

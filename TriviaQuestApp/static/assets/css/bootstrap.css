@@ -154,3 +154,13 @@ body {
 .mx-auto {
   margin-left: auto !important;
 }
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0rem 0rem !important;
+  }
+}
+
+.navbar {
+  padding: 0rem 0rem !important;
+}

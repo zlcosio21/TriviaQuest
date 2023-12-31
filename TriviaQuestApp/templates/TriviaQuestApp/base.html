@@ -20,6 +20,7 @@
   <!-- bootstrap core css -->
   <link rel="stylesheet" type="text/css" href="{% static 'assets/css/bootstrap.css' %}" />
   <link href="{% static 'assets/css/style.css' %}" rel="stylesheet" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
 </head>
 
@@ -27,10 +28,18 @@
 
 <header class="header_section">
   <div class="container">
-    <nav class="navbar navbar-expand-lg custom_nav-container ">
+    <nav class="navbar navbar-expand-lg custom_nav-container">
       <a class="navbar-brand" href="{% url 'inicio' %}">
         <span>Trivia Quest</span>
       </a>
+
+      <div class="user_option play-link-one">
+        <a href="{% url 'eleccion_quizes' %}" class="order_online">Jugar</a>
+      </div>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
@@ -70,15 +79,7 @@
           </li>
         </ul>
 
-        <div class="user_option">
-          <a href="" class="user_link">
-            <i class="fa fa-user" aria-hidden="true"></i>
-          </a>
-          <form class="form-inline">
-            <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
-              <i class="fa fa-search" aria-hidden="true"></i>
-            </button>
-          </form>
+        <div class="user_option play-link-two">
           <a href="{% url 'eleccion_quizes' %}" class="order_online">Jugar</a>
         </div>
 
@@ -104,5 +105,8 @@
 <script src="{% static 'assets/js/main.js' %}"></script>
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </html>

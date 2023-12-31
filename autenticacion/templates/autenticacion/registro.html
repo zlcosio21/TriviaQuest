@@ -10,7 +10,7 @@
       <form action="{% url 'registro' %}" method="post">
         {% csrf_token %}
 
-        <h2>Iniciar Sesion</h2>
+        <h2>Registrarse</h2>
 
         <div class="inputbox">
           <ion-icon name="person-outline"></ion-icon>
@@ -55,7 +55,7 @@
 
         </div>
 
-        <button class="auth-button" type="submit">Iniciar Sesion</button>
+        <button class="auth-button" type="submit">Crear Cuenta</button>
 
         <div class="register">
           <p>Ya tengo una cuenta <a href="{% url 'inicio_sesion' %}">Iniciar Sesion</a></p>

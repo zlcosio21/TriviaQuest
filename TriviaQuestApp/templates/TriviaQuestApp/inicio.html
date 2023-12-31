@@ -5,23 +5,32 @@
 {% block content %}
 
 <section class="slider_section ">
-  <div class="bg-box">
+  <div class="bg-box img-responsive-one">
     <img src="{% static 'assets/img/fondo_inicio.jpg' %}" alt="">
+  </div>
+  <div class="bg-box img-responsive-two">
+    <img src="{% static 'assets/img/fondo_inicio_movil.png' %}" alt="">
   </div>
   <div id="customCarousel1" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <div class="container ">
+        <div class="container">
           <div class="row">
             <div class="col-md-7 col-lg-6 ">
               <div class="detail-box margin-detail-box">
-                <h1>Trivia Quest</h1>
-                <p>
+                <h1 class="responsive-title-one">Trivia Quest</h1>
+                <h1 class="responsive-title-two">¡Bienvenido!</h1>
+                <p class="responsive-paragraph-one">
                   ¡Bienvenido a Trivia Quest! Tu destino para desafíos de preguntas
                    emocionantes. Descubre un mundo de opciones intrigantes y pon a
                    prueba tu ingenio con preguntas tipo A, B, C y D.
                    ¿Estás listo para la emoción?
                    ¡Comienza tu búsqueda en Trivia Quest ahora!
+                </p>
+                <p class="responsive-paragraph-two">
+                  ¡Bienvenido a Trivia Quest! Sumérgete en emocionantes desafíos de
+                  preguntas. Descubre opciones intrigantes y prueba tu ingenio con
+                  A, B, C y D. ¡Comienza tu búsqueda ahora!
                 </p>
                 <div class="btn-box">
                   <a href="{% url 'eleccion_quizes' %}" class="btn1">
@@ -39,7 +48,7 @@
 
 <!-- food section -->
 <br><br><br><br><br>
-<section class="food_section layout_padding-bottom">
+<section class="food_section layout_padding-bottom margin-responsive-categorys">
   <div class="container">
     <div class="heading_container heading_center">
       <h2>
@@ -73,7 +82,7 @@
       </div>
     </div>
     <div class="btn-box">
-      <a href="">Jugar</a>
+      <a href="{% url 'eleccion_quizes' %}">Jugar</a>
     </div>
   </div>
 </section>
@@ -99,13 +108,18 @@
             </h2>
           </div>
           <p>
-            ¡Bienvenido a Trivia Quest, el emocionante mundo de desafíos intelectuales!
+             ¡Bienvenido a Trivia Quest, el emocionante mundo de desafíos intelectuales!
              Sumérgete en una experiencia única llena de preguntas intrigantes y
-             opciones cautivadoras. En Trivia Quest, no solo encontrarás preguntas,
+             opciones cautivadoras.
+          </p>
+          <p>
+             En Trivia Quest, no solo encontrarás preguntas,
              sino una aventura para poner a prueba tu conocimiento y desbloquear el
              genio que llevas dentro. Prepárate para explorar el fascinante universo
              de opciones A, B, C y D, donde cada elección te acerca más a la victoria.
-            ¡Únete a nosotros y eleva tu ingenio con cada pregunta! La diversión
+          </p>
+          <p>
+             ¡Únete a nosotros y eleva tu ingenio con cada pregunta! La diversión
              comienza aquí, en Trivia Quest, donde el aprendizaje se fusiona con
              la emoción. ¡Que comience el desafío!
           </p>

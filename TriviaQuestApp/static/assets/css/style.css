@@ -457,6 +457,7 @@ a:focus {
 
 .card-quiz-question{
   text-align: center;
+  font-size: 20px;
 }
 
 @media (min-width: 1200px) {
@@ -1002,14 +1003,6 @@ top: -5px;
   margin-bottom: 10px;
 }
 
-@media (max-width: 468px) {
-  .container {
-    min-height: 100vh;
-    max-width: 100%;
-    border-radius: 0;
-  }
-}
-
 /*--------------------------------------------------------------
 # Navigation Mobile
 --------------------------------------------------------------*/
@@ -1085,6 +1078,68 @@ top: -5px;
     padding: 0rem 0rem !important;
   }
 
+  .slider_section .detail-box h1 {
+    font-size: 2.5rem;
+  }
+
+  .margin-detail-box {
+    margin-top: 80px;
+  }
+
+  .slider_section .detail-box p {
+    font-size: 14px;
+    max-width: 264px;
+    text-align: justify;
+    margin-left: 5px;
+  }
+
+  .responsive-paragraph-one {
+    display: none;
+  }
+
+  .responsive-paragraph-two {
+    display: block;
+  }
+
+  .slider_section .detail-box a {
+    margin-left: 5px;
+  }
+
+  .responsive-title-one {
+    display: none;
+  }
+
+  .responsive-title-two {
+    display: block;
+  }
+
+  .about_section .img-box img {
+    width: 20%;
+  }
+
+  .about_section .img-box img {
+    display: none;
+  }
+
+  .about_section .detail-box p {
+    font-size: 13px;
+  }
+
+  .heading_container h2 {
+    font-weight: bold;
+    font-size: 2rem;
+    margin-top: 0;
+    margin-top: 10px;
+  }
+
+  .img-responsive-one {
+    display: none;
+  }
+
+  .margin-responsive-categorys {
+    margin-top: 185px;
+  }
+
 }
 
 @media (min-width: 769px) {
@@ -1095,6 +1150,30 @@ top: -5px;
 
   .play-link-two {
     display: block;
+  }
+
+  .responsive-paragraph-one {
+    display: block;
+  }
+
+  .responsive-paragraph-two {
+    display: none;
+  }
+
+  .responsive-title-one {
+    display: block;
+  }
+
+  .responsive-title-two {
+    display: none;
+  }
+
+  .img-responsive-one {
+    display: block;
+  }
+
+  .img-responsive-two {
+    display: none;
   }
 
 }

@@ -542,6 +542,37 @@ a:focus {
   left: 20px;
 }
 
+.margin-question-quiz {
+  margin-bottom: 20px;
+  width: 340px !important;
+  border-radius: 4px;
+  border: none;
+  height: 34px;
+  outline: none;
+  padding-left: 14px;
+  font-size: 13px;
+}
+
+.margin-category-quiz {
+  margin-bottom: 35px !important;
+}
+
+.margin-create-quiz {
+  margin-top: -15px !important;
+}
+
+.redirect-link-login,
+.redirect-link-login:hover {
+  padding: 20px 126px;
+  background: #0c80ef;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 18px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: 0.3s linear;
+}
+
 .input-question-create-quiz {
   height: 40px;
   font-size: 20px;
@@ -675,6 +706,8 @@ a:focus {
   font-size: 2em;
   color: black;
   text-align: center;
+  font-weight: bold;
+  margin-top: 25px;
 }
 
 .inputbox{
@@ -816,6 +849,7 @@ top: -5px;
   font-size: 40px;
   color: #fff;
   margin-bottom: 50px;
+  font-weight: bold;
 }
 
 .label-quiz-election {

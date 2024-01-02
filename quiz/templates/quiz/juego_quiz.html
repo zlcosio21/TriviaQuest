@@ -24,35 +24,23 @@
       </div>
       <div class="answer-wrapper">
         <input type="radio" name="opcion_escogida" value="sin_tiempo" required style="display: none;">
-        <div class="answer selected">
+        <button class="answer selected">
           <span class="text">{{quiz.primera_opcion}}</span>
-          <span class="checkbox">
-            <i class="fas fa-check"></i>
-            <input type="radio" name="opcion_escogida" value="{{quiz.primera_opcion}}" required>
-          </span>
-        </div>
-        <div class="answer selected">
+          <input type="radio" class="input-game-quiz" name="opcion_escogida" value="{{quiz.primera_opcion}}" required>
+        </button>
+        <button class="answer selected">
           <span class="text">{{quiz.segunda_opcion}}</span>
-          <span class="checkbox">
-            <i class="fas fa-check"></i>
-            <input type="radio" name="opcion_escogida" value="{{quiz.segunda_opcion}}" required>
-          </span>
-        </div>
-        <div class="answer selected">
+          <input type="radio" class="input-game-quiz" name="opcion_escogida" value="{{quiz.segunda_opcion}}" required>
+        </button>
+        <button class="answer selected answer-selected">
           <span class="text">{{quiz.tercera_opcion}}</span>
-          <span class="checkbox">
-            <i class="fas fa-check"></i>
-            <input type="radio" name="opcion_escogida" value="{{quiz.tercera_opcion}}" required>
-          </span>
-        </div>
-        <div class="answer selected">
+          <input type="radio" class="input-game-quiz" name="opcion_escogida" value="{{quiz.tercera_opcion}}" required>
+        </button>
+        <button class="answer selected">
           <span class="text">{{quiz.cuarta_opcion}}</span>
-          <span class="checkbox">
-            <i class="fas fa-check"></i>
-            <input type="radio" name="opcion_escogida" value="{{quiz.cuarta_opcion}}" required>
-          </span>
-        </div>
-        <button class="btn-quiz-election" type="submit">Submit</button>
+          <input type="radio" class="input-game-quiz" name="opcion_escogida" value="{{quiz.cuarta_opcion}}" required>
+        </button>
+        <button class="btn-quiz-election" type="submit">Enviar</button>
       </div>
     </div>
   </div>

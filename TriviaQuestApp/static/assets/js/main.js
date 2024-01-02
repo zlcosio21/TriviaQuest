@@ -24,7 +24,7 @@ const startQuestion = () => {
     progress(time);
     time--;
 
-    if (time === 0) {
+    if (time === -1) {
       clearInterval(intervalId);
       hiddenInput.checked = true;
       submitButton.click();
@@ -43,4 +43,17 @@ startQuestion();
 selectTime.addEventListener("change", () => {
   time = parseInt(selectTime.dataset.valor);
   startQuestion();
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+  var answerButtons = document.querySelectorAll('.answer.selected');
+
+  answerButtons.forEach(function(button) {
+    button.addEventListener('click', function(event) {
+      event.preventDefault();
+
+      var radioInput = button.querySelector('input[type="radio"]');
+      radioInput.checked = true;
+    });
+  });
 });

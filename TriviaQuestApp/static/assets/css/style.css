@@ -934,6 +934,9 @@ top: -5px;
   margin-bottom: 20px;
 }
 
+
+
+
 .answer-wrapper .answer {
   width: 100%;
   height: 60px;
@@ -947,6 +950,20 @@ top: -5px;
   margin-bottom: 20px;
   cursor: pointer;
   transition: 0.3s linear;
+  background: transparent;
+}
+
+.answer-wrapper .answer:active,
+.answer-wrapper .answer:focus {
+  background-color: transparent;
+  color: white;
+  border-color: #0084ff;
+  outline: none;
+}
+
+.input-game-quiz {
+  opacity: 0;
+  position: absolute !important;
 }
 
 .answer .checkbox {

@@ -869,6 +869,7 @@ top: -5px;
   background: #fff;
   color: #1f2847;
   font-size: 14px;
+  outline: none;
 }
 
 .start-screen .btn {
@@ -1189,6 +1190,36 @@ top: -5px;
 
   .margin-responsive-categorys {
     margin-top: 185px;
+  }
+
+}
+
+@media (max-width: 440px) {
+
+  .user_option .order_online {
+    padding: 8px 29px;
+    display: flex;
+    align-items: center;
+    margin-left: -10px;
+  }
+
+  .navbar-toggler {
+    font-size: 1.25rem;
+    line-height: 1;
+    background-color: transparent;
+    border-radius: 0.25rem;
+    padding: 0 !important;
+    border: 0px solid transparent !important;
+  }
+
+  .margin-question-quiz {
+    width: 294px !important;
+  }
+
+  .redirect-link-login,
+  .redirect-link-login:hover {
+    padding: 20px 105px;
+    font-size: 17px;
   }
 
 }

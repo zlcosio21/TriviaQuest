@@ -4,7 +4,7 @@
 
 {% block content %}
 
-<form action="{% url 'comprobar_respuesta' quiz.pregunta respuestas_correctas pregunta_actual num_preguntas categoria tiempo %}" method="post" role="form">
+<form id="form-quiz" action="{% url 'comprobar_respuesta' quiz.pregunta respuestas_correctas pregunta_actual num_preguntas categoria tiempo %}" method="post" role="form">
   {% csrf_token %}
 
   <div class="quiz-election body-quiz-election">
@@ -24,22 +24,12 @@
       </div>
       <div class="answer-wrapper">
         <input type="radio" name="opcion_escogida" value="sin_tiempo" required style="display: none;">
-        <button class="answer selected">
-          <span class="text">{{quiz.primera_opcion}}</span>
-          <input type="radio" class="input-game-quiz" name="opcion_escogida" value="{{quiz.primera_opcion}}" required>
-        </button>
-        <button class="answer selected">
-          <span class="text">{{quiz.segunda_opcion}}</span>
-          <input type="radio" class="input-game-quiz" name="opcion_escogida" value="{{quiz.segunda_opcion}}" required>
-        </button>
-        <button class="answer selected answer-selected">
-          <span class="text">{{quiz.tercera_opcion}}</span>
-          <input type="radio" class="input-game-quiz" name="opcion_escogida" value="{{quiz.tercera_opcion}}" required>
-        </button>
-        <button class="answer selected">
-          <span class="text">{{quiz.cuarta_opcion}}</span>
-          <input type="radio" class="input-game-quiz" name="opcion_escogida" value="{{quiz.cuarta_opcion}}" required>
-        </button>
+        {% for opcion in opciones %}
+          <button class="answer selected">
+            <span class="text">{{opcion}}</span>
+            <input type="radio" class="input-game-quiz" name="opcion_escogida" value="{{opcion}}" required>
+          </button>
+        {% endfor %}
         <button class="btn-quiz-election" type="submit">Enviar</button>
       </div>
     </div>

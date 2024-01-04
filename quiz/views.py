@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from quiz.models import Quiz, CategoriaQuiz
 from validators import correct_option
 from django.contrib import messages
+import random
 
 # Create your views here.
 def creacion_quiz(request):
@@ -54,9 +55,13 @@ def juego_quiz(request, respuestas_correctas, pregunta_actual, num_preguntas, ca
         messages.error(request, f"Actualmente no hay quizes para la categoria {categoria.nombre}", extra_tags="not_quizes_category")
         return redirect("eleccion_quizes")
 
+    opciones_aleatorias = [quiz.primera_opcion, quiz.segunda_opcion, quiz.tercera_opcion, quiz.cuarta_opcion]
+    random.shuffle(opciones_aleatorias)
+
     context = {
         "respuestas_correctas":respuestas_correctas,
         "quiz":quiz,
+        "opciones":opciones_aleatorias,
         "pregunta_actual":pregunta_actual,
         "num_preguntas":num_preguntas,
         "categoria":categoria, "tiempo":tiempo

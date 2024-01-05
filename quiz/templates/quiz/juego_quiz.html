@@ -22,15 +22,32 @@
         </div>
         <div class="question">{{quiz.pregunta}}</div>
       </div>
-      <div class="answer-wrapper">
+      <div class="answer-wrapper show-answer-wrapper">
         <input type="radio" name="opcion_escogida" value="sin_tiempo" required style="display: none;">
+
         {% for opcion in opciones %}
-          <button class="answer selected">
-            <span class="text">{{opcion}}</span>
+          <button class="answer selected select-option options-to-hide">
+            <span class="text.">{{opcion}}</span>
             <input type="radio" class="input-game-quiz" name="opcion_escogida" value="{{opcion}}" required>
           </button>
         {% endfor %}
-        <button class="btn-quiz-election" type="submit">Enviar</button>
+
+        {% for opcion in opciones %}
+          {% if opcion == quiz.opcion_correcta %}
+            <div class="answer selected show-options" style="border-color: #0cef2a; display: none;">
+              <span class="text">{{opcion}}</span>
+              <input type="radio" class="input-game-quiz" name="opcion_escogida">
+            </div>
+          {% else %}
+            <div class="answer selected show-options" style="border-color: #fc3939; display: none;">
+              <span class="text">{{opcion}}</span>
+              <input type="radio" class="input-game-quiz" name="opcion_escogida">
+            </div>
+          {% endif %}
+        {% endfor %}
+
+        <button id="enviarBtn" class="btn-quiz-election show-submit-button" type="button">Enviar</button>
+        <button class="btn-quiz-election submit-button" style="display: none;" type="submit">Siguiente</button>
       </div>
     </div>
   </div>

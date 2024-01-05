@@ -16,6 +16,10 @@
                 <label class="label-quiz-election">Escribe la pregunta:</label>
                     <input class="margin-question-quiz" type="text" name="pregunta" maxlength="100" required>
 
+                    {% for message in messages %} {% if 'quiz_exist' in message.tags %}
+                        <p class="error-category">{{message}}</p>
+                    {% endif %} {% endfor %}
+
                 <label class="label-quiz-election">Escribe la categoria:</label>
                     <input class="margin-question-quiz" type="text" name="categoria" maxlength="30" required>
 

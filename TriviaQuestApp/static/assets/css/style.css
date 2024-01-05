@@ -954,6 +954,24 @@ top: -5px;
   background: transparent;
 }
 
+.answer-wrapper .show-options {
+  width: 100%;
+  height: 60px;
+  padding: 15px;
+  border-radius: 10px;
+  color: #fff;
+  border: 3px solid #3f4868;
+  margin-bottom: 20px;
+  cursor: pointer;
+  transition: 0.3s linear;
+  background: transparent;
+}
+
+.text {
+  display: flex;
+  margin-left: 5px;
+}
+
 .answer-wrapper .answer:active,
 .answer-wrapper .answer:focus {
   background-color: transparent;
@@ -989,13 +1007,7 @@ top: -5px;
   opacity: 1;
 }
 
-.answer.correct {
-  border-color: #0cef2a;
-}
 
-.answer.wrong {
-  border-color: #fc3939;
-}
 
 .question-wrapper,
 .answer-wrapper {

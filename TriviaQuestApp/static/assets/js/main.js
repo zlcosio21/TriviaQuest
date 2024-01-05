@@ -57,3 +57,29 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   });
 });
+
+document.getElementById('enviarBtn').addEventListener('click', function () {
+  clearInterval(intervalId);
+
+  var selectedOption = document.querySelector('input[name="opcion_escogida"]:checked');
+
+  if (!selectedOption) {
+    document.querySelector('input[name="opcion_escogida"][value="sin_tiempo"]').checked = true;
+  }
+
+  var showOptions = document.getElementsByClassName('show-options');
+  for (var i = 0; i < showOptions.length; i++) {
+    showOptions[i].style.display = 'inline-block';
+  }
+
+  var showSubmitButton = document.querySelector('.show-submit-button');
+  showSubmitButton.style.display = 'none';
+
+  var submitButton = document.querySelector('.submit-button');
+  submitButton.style.display = 'inline-block';
+
+  var optionsToHide = document.getElementsByClassName('options-to-hide');
+  for (var i = 0; i < optionsToHide.length; i++) {
+    optionsToHide[i].style.display = 'none';
+  }
+});

@@ -1,4 +1,4 @@
-# Moral Games Web
+# Trivia Quest
 
 ¡Bienvenido a Trivia Quest, el emocionante mundo de desafíos intelectuales! Sumérgete en una experiencia única llena de preguntas intrigantes y opciones cautivadoras.
 

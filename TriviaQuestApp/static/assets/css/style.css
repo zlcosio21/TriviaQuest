@@ -561,18 +561,6 @@ a:focus {
   margin-top: -15px !important;
 }
 
-.redirect-link-login,
-.redirect-link-login:hover {
-  padding: 20px 126px;
-  background: #0c80ef;
-  border-radius: 10px;
-  color: #fff;
-  font-size: 18px;
-  text-decoration: none;
-  cursor: pointer;
-  transition: 0.3s linear;
-}
-
 .input-question-create-quiz {
   height: 40px;
   font-size: 20px;
@@ -636,6 +624,11 @@ a:focus {
 .option-correct-create-quiz {
   margin-top: 9px;
   margin-left: 40px;
+}
+
+.username {
+  color: #576081 !important;
+  font-size: 14px !important;
 }
 
 .btn{
@@ -1215,6 +1208,14 @@ top: -5px;
     margin-left: -10px;
   }
 
+  .select-quiz-election {
+    max-width: 100%;
+  }
+
+  .btn-quiz-election {
+    max-width: 100%;
+  }
+
   .navbar-toggler {
     font-size: 1.25rem;
     line-height: 1;
@@ -1225,13 +1226,7 @@ top: -5px;
   }
 
   .margin-question-quiz {
-    width: 294px !important;
-  }
-
-  .redirect-link-login,
-  .redirect-link-login:hover {
-    padding: 20px 105px;
-    font-size: 17px;
+    max-width: 100% !important;
   }
 
 }

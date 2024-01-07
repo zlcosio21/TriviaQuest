@@ -7,6 +7,10 @@ import random
 # Create your views here.
 def creacion_quiz(request):
     if request.method ==  "POST":
+
+        if not request.user.is_authenticated:
+            return redirect("inicio_sesion")
+
         categoria = request.POST.get("categoria")
         pregunta = request.POST.get("pregunta")
         primera_opcion = request.POST.get("primera_opcion")
@@ -18,7 +22,7 @@ def creacion_quiz(request):
         categoria_fk, created = CategoriaQuiz.objects.get_or_create(nombre=categoria)
         opcion_correcta = correct_option(primera_opcion, segunda_opcion, tercera_opcion, cuarta_opcion, opcion_correcta)
 
-        if Quiz.objects.get(pregunta=pregunta):
+        if Quiz.objects.filter(pregunta=pregunta).exists():
             messages.error(request, "La pregunta ya existe ingrese otra pregunta", extra_tags="quiz_exist")
             return redirect("creacion_quiz")
 

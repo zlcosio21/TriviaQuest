@@ -44,11 +44,9 @@
                 </select>
 
             </div>
-            {% if user.is_authenticated %}
-                <button class="btn-quiz-election start" type="submit">Crear Quiz</button>
-            {% else %}
-                <a href="{% url 'inicio_sesion' %}" class="redirect-link-login">Crear Quiz</a><br><br>
-            {% endif %}
+
+            <button class="btn-quiz-election start" type="submit">Crear Quiz</button>
+
         </div>
     </div>
 

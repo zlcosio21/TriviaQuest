@@ -9,6 +9,7 @@ def creacion_quiz(request):
     if request.method ==  "POST":
 
         if not request.user.is_authenticated:
+            messages.error(request, "Para poder crear quizes, debe iniciar sesion", extra_tags="create_quiz_login")
             return redirect("inicio_sesion")
 
         categoria = request.POST.get("categoria")

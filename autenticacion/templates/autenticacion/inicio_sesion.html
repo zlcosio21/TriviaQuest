@@ -26,13 +26,21 @@
 
         <button class="auth-button" type="submit">Iniciar Sesion</button>
 
-        {% for message in messages %} {% if 'quiz_exist' in message.tags %}
-          <span class="error-login">{{message}}</span>
-        {% endif %} {% endfor %}
+        {% for message in messages %}
+          <span class="error-login">
 
-        {% for message in messages %} {% if 'create_quiz_login' in message.tags %}
-          <span class="error-login">{{message}}</span>
-        {% endif %} {% endfor %}
+            {% if 'account_not_exist' in message.tags %}
+
+              {{message}}
+
+            {% elif 'create_quiz_login' in message.tags %}
+
+              {{message}}
+
+            {% endif %}
+
+          </span>
+         {% endfor %}
 
         <div class="register">
           <p>No tengo una cuenta <a href="{% url 'registro' %}">Registrarse</a></p>

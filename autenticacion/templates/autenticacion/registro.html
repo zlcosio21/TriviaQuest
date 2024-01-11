@@ -17,13 +17,21 @@
           <input type="text" name="username" required>
           <label>Nombre de usuario</label>
 
-          {% for message in messages %} {% if 'username_characters_error' in message.tags %}
-            <span class="error-register">{{message}}</span>
-          {% endif %} {% endfor %}
+          {% for message in messages %}
+            <span class="error-register">
 
-          {% for message in messages %} {% if 'username_exist_error' in message.tags %}
-            <span class="error-register">{{message}}</span>
-          {% endif %} {% endfor %}
+              {% if 'username_characters_error' in message.tags %}
+
+                {{message}}
+
+              {% elif 'username_exist_error' in message.tags %}
+
+                {{message}}
+
+              {% endif %}
+
+            </span>
+          {% endfor %}
 
         </div>
 

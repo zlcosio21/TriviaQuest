@@ -5,3 +5,7 @@ from quiz.models import Quiz
 def perfil(request):
 
     return  render(request, "perfil/perfil.html")
+
+def editar_perfil(request):
+
+    return render(request, "perfil/editar_perfil.html")

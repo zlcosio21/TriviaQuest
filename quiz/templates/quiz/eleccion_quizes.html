@@ -21,6 +21,11 @@
                     <option value="40">40</option>
                     <option value="50">50</option>
                 </select>
+
+                {% for message in messages %} {% if 'not_sufficient_quizzes' in message.tags %}
+                    <p class="error-category">{{message}}</p>
+                {% endif %} {% endfor %}
+
                 <label class="label-quiz-election" for="category">Selecciona categoria:</label>
                 <select class="select-quiz-election" id="category" name="categoria" required>
                     {% for categoria in categorias %}

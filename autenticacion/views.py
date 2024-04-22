@@ -27,7 +27,6 @@ def registro(request):
         equals_error(request, password, password_confirm)
 
         if isvalid(request, username, password, password_confirm):
-
            user = User.objects.create_user(username=username, email=email, password=password)
            user.save()
 
@@ -39,6 +38,7 @@ def registro(request):
            return redirect("inicio")
 
     return render(request, "autenticacion/registro.html")
+
 
 def inicio_sesion(request):
     if request.method == "POST":
@@ -55,6 +55,7 @@ def inicio_sesion(request):
         messages.error(request, "La cuenta no existe, ingrese los datos nuevamente", extra_tags="account_not_exist")
 
     return render(request, "autenticacion/inicio_sesion.html")
+
 
 def cerrar_sesion(request):
     logout(request)

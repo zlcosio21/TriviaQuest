@@ -3,12 +3,12 @@ from django.contrib.auth.models import User
 from TriviaQuest.base_models import Models
 
 # Create your models here.
-
 class CategoriaQuiz(Models):
     nombre = models.CharField(max_length=30, unique=True, null=False)
 
     def __str__(self):
         return self.nombre
+
 
 class Quiz(Models):
     usuario = models.ForeignKey(User, on_delete=models.CASCADE)

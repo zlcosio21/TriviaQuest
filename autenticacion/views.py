@@ -1,16 +1,9 @@
-from django.shortcuts import render, redirect
-from django.contrib.auth.models import User
-from django.core.mail import EmailMessage
-import os
-from dotenv import load_dotenv
-from validators import *
-from django.contrib import messages
+from utils.validators import register_errors, register_user
 from django.contrib.auth import login, authenticate, logout
+from django.shortcuts import render, redirect
+from utils.emails import send_email_register
+from django.contrib import messages
 
-# Email and password private
-load_dotenv()
-EMAIL = os.getenv("EMAIL")
-PASSWORD = os.getenv("PASSWORD")
 
 # Create your views here.
 def registro(request):
@@ -21,21 +14,16 @@ def registro(request):
         password = request.POST.get("password")
         password_confirm = request.POST.get("password_confirm")
 
-        username_exist(request, username)
-        username_characters_error(request, username)
-        characters_error(request, password)
-        equals_error(request, password, password_confirm)
+        if register_errors(request, username, email, password, password_confirm):
+            return redirect("registro")
 
-        if isvalid(request, username, password, password_confirm):
-           user = User.objects.create_user(username=username, email=email, password=password)
-           user.save()
+        user = register_user(user, username, email, password)
 
-           envio_email = EmailMessage("Mensaje desde Trivia Quest", "El usuario con nombre {}, ha registrado su cuenta, con correo {} \n\n ".format(username, email), "",[EMAIL], reply_to=[email])
-           envio_email.send()
+        send_email_register(username, email)
 
-           login(request, user)
+        login(request, user)
 
-           return redirect("inicio")
+        return redirect("inicio")
 
     return render(request, "autenticacion/registro.html")
 
@@ -47,12 +35,13 @@ def inicio_sesion(request):
 
         user = authenticate(request, username=username, password=password)
 
-        if user is not None:
-            login(request, user)
+        if user == None:
+            messages.error(request, "La cuenta no existe, ingrese los datos nuevamente", extra_tags="account_not_exist")
+            return redirect("inicio_sesion")
 
-            return redirect("inicio")
+        login(request, user)
 
-        messages.error(request, "La cuenta no existe, ingrese los datos nuevamente", extra_tags="account_not_exist")
+        return redirect("inicio")
 
     return render(request, "autenticacion/inicio_sesion.html")
 

@@ -1,20 +1,19 @@
+from utils.validators import not_authenticated
 from django.shortcuts import render, redirect
 from quiz.models import Quiz, CategoriaQuiz
-from validators import correct_option
 from django.contrib import messages
-import random
+
 
 # Create your views here.
 def creacion_quiz(request):
     if request.method ==  "POST":
+        pregunta = request.POST.get("pregunta")
 
-        if not request.user.is_authenticated:
+        if not_authenticated(request):
             messages.error(request, "Para poder crear quizes, debe iniciar sesion", extra_tags="create_quiz_login")
             return redirect("inicio_sesion")
 
-        pregunta = request.POST.get("pregunta")
-
-        if Quiz.objects.filter(pregunta=pregunta).exists():
+        if Quiz.already_exist(pregunta):
             messages.error(request, "La pregunta ya existe ingrese otra pregunta", extra_tags="quiz_exist")
             return redirect("creacion_quiz")
 
@@ -25,21 +24,11 @@ def creacion_quiz(request):
         cuarta_opcion = request.POST.get("cuarta_opcion")
         opcion_correcta = request.POST.get("opcion_correcta")
 
-        categoria_fk, created = CategoriaQuiz.objects.get_or_create(nombre=categoria)
-        opcion_correcta = correct_option(primera_opcion, segunda_opcion, tercera_opcion, cuarta_opcion, opcion_correcta)
+        categoria = CategoriaQuiz.get_or_create(categoria)
+        opcion_correcta = Quiz.correct_option(primera_opcion, segunda_opcion, tercera_opcion, cuarta_opcion, opcion_correcta)
+        Quiz.create(request, categoria, pregunta, primera_opcion, segunda_opcion, tercera_opcion, cuarta_opcion, opcion_correcta)
 
-        Quiz.objects.create(
-            usuario=request.user,
-            categoria=categoria_fk,
-            pregunta=pregunta,
-            primera_opcion=primera_opcion,
-            segunda_opcion=segunda_opcion,
-            tercera_opcion=tercera_opcion,
-            cuarta_opcion=cuarta_opcion,
-            opcion_correcta=opcion_correcta,
-        )
-
-        return redirect("inicio")
+        return redirect("eleccion_quizes")
 
     return render(request, "quiz/creacion_quiz.html")
 
@@ -48,57 +37,78 @@ def eleccion_quizes(request):
     categorias = CategoriaQuiz.objects.all()
 
     if request.method == "POST":
-        num_preguntas = request.POST.get("num_preguntas")
         categoria = request.POST.get("categoria")
-        obj_categoria = CategoriaQuiz.objects.get(nombre=categoria)
+        num_preguntas = request.POST.get("num_preguntas")
 
-        if  Quiz.objects.filter(categoria=obj_categoria).count() < int(num_preguntas):
+        if Quiz.not_sufficient_quizes(categoria, num_preguntas):
             messages.error(request, "Lo sentimos, no hay suficientes preguntas disponibles para poder continuar", extra_tags="not_sufficient_quizzes")
             return redirect("eleccion_quizes")
 
-        tiempo = request.POST.get("tiempo")
-        pregunta_actual = 1
-        respuestas_correctas = 0
+        request.session["tiempo"] = request.POST.get("tiempo")
+        request.session["categoria"] = categoria
+        request.session["num_preguntas"] = num_preguntas
+        request.session["num_pregunta_actual"] = 1
+        request.session["respuestas_correctas"] = 0
 
-        return redirect("juego_quiz", respuestas_correctas, pregunta_actual, num_preguntas, categoria, tiempo)
+        return redirect("juego_quiz")
 
     return render(request, "quiz/eleccion_quizes.html", {"categorias":categorias})
 
 
-def juego_quiz(request, respuestas_correctas, pregunta_actual, num_preguntas, categoria, tiempo):
-    categoria = CategoriaQuiz.objects.get(nombre=categoria)
-    quiz = Quiz.objects.filter(categoria=categoria).order_by('?').first()
+def juego_quiz(request):
+    tiempo = request.session.get("tiempo")
+    categoria = request.session.get("categoria")
+    num_preguntas = request.session.get("num_preguntas")
+    num_pregunta_actual = request.session.get("num_pregunta_actual")
+    respuestas_correctas = request.session.get("respuestas_correctas")
 
-    opciones_aleatorias = [quiz.primera_opcion, quiz.segunda_opcion, quiz.tercera_opcion, quiz.cuarta_opcion]
-    random.shuffle(opciones_aleatorias)
+    categoria = CategoriaQuiz.objects.get(nombre=categoria)
+    quiz = Quiz.random_quiz(categoria)
+
+    request.session["pregunta"] = quiz.pregunta
+    opciones_aleatorias = quiz.random_options()
 
     context = {
-        "respuestas_correctas":respuestas_correctas,
-        "quiz":quiz,
-        "opciones":opciones_aleatorias,
-        "pregunta_actual":pregunta_actual,
+        "tiempo":tiempo,
+        "categoria":categoria,
         "num_preguntas":num_preguntas,
-        "categoria":categoria, "tiempo":tiempo
+        "num_pregunta_actual":num_pregunta_actual,
+        "respuestas_correctas":respuestas_correctas,
+        "opciones":opciones_aleatorias,
+        "quiz": quiz
     }
 
     return render(request, "quiz/juego_quiz.html", context)
 
 
-def comprobar_respuesta(request, pregunta, respuestas_correctas, pregunta_actual, num_preguntas, categoria, tiempo):
+def comprobar_respuesta(request):
     if request.method == "POST":
+        num_preguntas = request.session.get("num_preguntas")
+        num_pregunta_actual = request.session.get("num_pregunta_actual")
+        respuestas_correctas = request.session.get("respuestas_correctas")
         opcion_escogida = request.POST.get("opcion_escogida")
+
+        pregunta = request.session.get("pregunta")
         quiz = Quiz.objects.get(pregunta=pregunta)
 
-        respuestas_correctas +=  1 if opcion_escogida == quiz.opcion_correcta else 0
-        pregunta_actual += 1
+        respuestas_correctas += quiz.correct_answers(opcion_escogida)
+        num_pregunta_actual += 1
 
-        if pregunta_actual > num_preguntas:
-            return redirect("fin_juego_quiz", respuestas_correctas, num_preguntas)
+        request.session["num_pregunta_actual"] = num_pregunta_actual
+        request.session["respuestas_correctas"] = respuestas_correctas
 
-        return redirect("juego_quiz", respuestas_correctas, pregunta_actual, num_preguntas, categoria, tiempo)
+        if num_pregunta_actual > int(num_preguntas):
+            return redirect("fin_juego_quiz")
+
+        return redirect("juego_quiz")
 
     return render(request, "quiz/juego_quiz.html")
 
 
-def fin_juego_quiz(request, respuestas_correctas, num_preguntas):
+def fin_juego_quiz(request):
+    num_preguntas = request.session.get("num_preguntas")
+    respuestas_correctas = request.session.get("respuestas_correctas")
+
+    request.session.flush()
+
     return render(request, "quiz/fin_juego_quiz.html", {"respuestas_correctas":respuestas_correctas, "num_preguntas":num_preguntas})

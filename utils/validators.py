@@ -3,7 +3,7 @@ from django.contrib import messages
 
 
 # Register User
-def register_user(user, username, email, password):
+def create_user(user, username, email, password):
     user = User.objects.create_user(username=username, email=email, password=password)
     user.save()
 

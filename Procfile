@@ -1,1 +1,1 @@
-web: gunicorn TriviaQuest.wsgi --log-file -
+web: gunicorn trivia_quest.wsgi --log-file -
